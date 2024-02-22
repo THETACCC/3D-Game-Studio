@@ -101,7 +101,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -117,6 +117,7 @@ GameObject:
   - component: {fileID: 3368435156643744331}
   - component: {fileID: 8464975129345488723}
   - component: {fileID: 3990478336578265106}
+  - component: {fileID: 973638545407745823}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -213,3 +214,15 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &973638545407745823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4370068298912160634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d758adce778083488b771ab65c9838b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
