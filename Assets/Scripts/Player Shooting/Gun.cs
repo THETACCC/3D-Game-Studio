@@ -23,6 +23,10 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            SlowShoot();
+        }
     }
 
     public void Shoot()
@@ -30,6 +34,15 @@ public class Gun : MonoBehaviour
         Debug.Log("ShooTING");
         GameObject bullet = Instantiate(bulletPrefab, firingPoint.transform.position, transform.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        Destroy(bullet, 5f);
+    }
+
+    public void SlowShoot()
+    {
+        Debug.Log("ShooTING");
+        GameObject bullet = Instantiate(bulletPrefab, firingPoint.transform.position, transform.rotation);
+        bullet.gameObject.transform.localScale = Vector3.one;
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed / 4);
         Destroy(bullet, 5f);
     }
 
