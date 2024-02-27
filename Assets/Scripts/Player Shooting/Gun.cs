@@ -5,11 +5,16 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField]
-    private GameObject bulletPrefab;
+    private GameObject KineticBullet;
+    [SerializeField] private GameObject GravityBullet;
+    [SerializeField] private GameObject LiftBullet;
     [SerializeField]
     private GameObject firingPoint;
     [SerializeField]
     private float bulletSpeed;
+
+    public GunChangeMode gunChangeMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,27 +28,27 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            SlowShoot();
-        }
+
     }
 
     public void Shoot()
     {
         Debug.Log("ShooTING");
-        GameObject bullet = Instantiate(bulletPrefab, firingPoint.transform.position, transform.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
-        Destroy(bullet, 5f);
+        if(gunChangeMode.mode == 0)
+        {
+            GameObject bullet = Instantiate(KineticBullet, firingPoint.transform.position, transform.rotation);
+        }
+        else if(gunChangeMode.mode == 1)
+        {
+            GameObject bullet = Instantiate(GravityBullet, firingPoint.transform.position, transform.rotation);
+        }
+        else if (gunChangeMode.mode == 2)
+        {
+            GameObject bullet = Instantiate(LiftBullet, firingPoint.transform.position, transform.rotation);
+        }
+
     }
 
-    public void SlowShoot()
-    {
-        Debug.Log("ShooTING");
-        GameObject bullet = Instantiate(bulletPrefab, firingPoint.transform.position, transform.rotation);
-        bullet.gameObject.transform.localScale = Vector3.one;
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed / 4);
-        Destroy(bullet, 5f);
-    }
+
 
 }
