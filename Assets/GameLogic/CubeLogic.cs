@@ -24,7 +24,8 @@ public class CubeLogic : MonoBehaviour
         {
             Debug.Log("EnterTrigger");
 
-            Vector3 directionFromBullet = transform.position - other.transform.position;
+            Vector3 closestPointOnBullet = other.ClosestPoint(transform.position);
+            Vector3 directionFromBullet = transform.position - closestPointOnBullet;
             directionFromBullet.Normalize();
 
             rb.AddForce(directionFromBullet * pushMagnitude);
@@ -34,7 +35,8 @@ public class CubeLogic : MonoBehaviour
         {
             Debug.Log("EnterTrigger");
 
-            Vector3 directionFromBullet = transform.position - other.transform.position;
+            Vector3 closestPointOnBullet = other.ClosestPoint(transform.position);
+            Vector3 directionFromBullet = transform.position - closestPointOnBullet;
             directionFromBullet.Normalize();
 
             rb.AddForce(-directionFromBullet * pushMagnitude);

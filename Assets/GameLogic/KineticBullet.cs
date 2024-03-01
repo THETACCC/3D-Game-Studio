@@ -7,15 +7,16 @@ public class KineticBullet : Bullet
     private void Start()
     {
         Invoke("DestroyWhenTooLong", bulletLifetime);
-        Init(bulletSpeed,false);
+
     }
 
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    public override void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "interactions")
+        base.OnCollisionEnter(collision);
+        if (collision.gameObject.tag == "interactions")
         {
             Destroy(gameObject);
         }

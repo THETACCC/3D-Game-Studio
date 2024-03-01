@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
         _isGhost = isGhost;
         GetComponent<Rigidbody>().AddForce(velocity, ForceMode.Impulse);
     }
-    public void OnCollisionEnter(Collision col)
+    public virtual void OnCollisionEnter(Collision col)
     {
         if (_isGhost) return;
     }
