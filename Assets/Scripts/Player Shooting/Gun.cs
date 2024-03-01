@@ -40,14 +40,16 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+        if(Input.GetMouseButton(0))
+        {
+            projection.SimulateTrajectory(GhostBullet.GetComponent<Bullet>(), firingPoint.transform.position, firingPoint.transform.forward * _Force);
+        }
+    
 
-
-        projection.SimulateTrajectory(GhostBullet.GetComponent<Bullet>(), firingPoint.transform.position, firingPoint.transform.forward * _Force);
     }
 
     private void FixedUpdate()
     {
-
     }
     public void Shoot()
     {

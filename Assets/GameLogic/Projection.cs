@@ -17,12 +17,15 @@ public class Projection : MonoBehaviour
     private readonly Dictionary<Transform, Transform> _spawnedObjects = new Dictionary<Transform, Transform>();
     private void Start()
     {
-        /*
+
+        CreatePhysicsScene();
+        
         bulletPool = new ObjectPool<Bullet>(() =>
         {
-    
-            return Instantiate(ghostObj);
-            
+            var bullet = Instantiate(ghostObj);
+            bullet.gameObject.SetActive(false); // Initially inactive
+            SceneManager.MoveGameObjectToScene(bullet.gameObject, _simulationScene);
+            return bullet;
         }, bullet =>
         {
             bullet.gameObject.SetActive(true);
@@ -33,9 +36,8 @@ public class Projection : MonoBehaviour
         {
             Destroy(bullet.gameObject);
         }, true, 15, 20);
-        */
+        
 
-        CreatePhysicsScene();
 
         //for (int i = 0; i < 15; i++)
         //{
@@ -68,32 +70,29 @@ public class Projection : MonoBehaviour
 
     public void SimulateTrajectory(Bullet bulletPrefab, Vector3 pos, Vector3 velocity)
     {
-        //var ghostObj1 = bulletPool.Get();
-        //ghostObj1.transform.position = pos;
-        //ghostObj1.transform.rotation = Quaternion.identity;
         var ghostObj = Instantiate(bulletPrefab, pos, Quaternion.identity);
-        SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
+        //var ghostObj = bulletPool.Get(); // This should activate the object via OnGet
+        //ghostObj.transform.position = pos;
+        //ghostObj.transform.rotation = Quaternion.identity;
+       SceneManager.MoveGameObjectToScene(ghostObj.gameObject, _simulationScene);
 
-        ghostObj.Init(velocity, true);
+        ghostObj.Init(velocity, true); // Initialize bullet with the given velocity
 
         _line.positionCount = _maxPhysicsFrameIterations;
 
         for (var i = 0; i < _maxPhysicsFrameIterations; i++)
         {
             _physicsScene.Simulate(Time.fixedDeltaTime);
-            _line.SetPosition(i, ghostObj.transform.position);
+            _line.SetPosition(i, ghostObj.transform.position); // Update line renderer
         }
-        //ghostObj.transform.position = pos;
-        //ghostObj1.transform.position = pos;
-        //Invoke("Release", .2f);
 
-        //bulletPool.Release(ghostObj1);
+        //bulletPool.Release(ghostObj);
         Destroy(ghostObj.gameObject);
     }
 
     //public void Release()
     //{
-    //    bulletPool.Release(ghostObj);
+    //    
     //}
 
     public void Initialize(Bullet bulletPrefab, Vector3 pos, Vector3 velocity)
