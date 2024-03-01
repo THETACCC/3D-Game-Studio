@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3863554122321128372}
   - component: {fileID: 5204720096848636046}
   - component: {fileID: 7670951101643835475}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: GravityBullet
   m_TagString: GravityBullet
   m_Icon: {fileID: 0}

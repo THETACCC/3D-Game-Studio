@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private Projection projection;
     [SerializeField]
     private GameObject KineticBullet;
     [SerializeField] private GameObject GravityBullet;
@@ -11,7 +13,7 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GameObject firingPoint;
     [SerializeField]
-    private float bulletSpeed;
+    private Vector3 bulletSpeed;
 
     public GunChangeMode gunChangeMode;
 
@@ -29,6 +31,7 @@ public class Gun : MonoBehaviour
             Shoot();
         }
 
+        projection.SimulateTrajectory(KineticBullet.GetComponent<Bullet>(), gameObject.transform.position, bulletSpeed);
     }
 
     public void Shoot()

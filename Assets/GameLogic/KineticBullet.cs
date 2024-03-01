@@ -7,12 +7,19 @@ public class KineticBullet : Bullet
     private void Start()
     {
         Invoke("DestroyWhenTooLong", bulletLifetime);
-        GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        Init(bulletSpeed,false);
     }
+
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "interactions")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 
