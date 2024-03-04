@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3036612299210151829}
   - component: {fileID: 9117443010368450334}
   - component: {fileID: 2303865091921361165}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube (13)
-  m_TagString: Interactions
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e7e89493dc5181d4298e0f5bc20a5795, type: 2}
+  - {fileID: 2100000, guid: b0f0918f3e4f67b4793e763ae9eecbe5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 6898098391857226821}
   - component: {fileID: 5144046318476828159}
   - component: {fileID: 6411689247771744240}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CubeOBJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}

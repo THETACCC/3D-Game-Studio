@@ -10,6 +10,7 @@ TagManager:
   - GravityBullet
   - LiftBullet
   - Interactions
+  - Cube
   layers:
   - Default
   - TransparentFX
@@ -23,9 +24,9 @@ TagManager:
   - Weapon
   - ShootingUI
   - Bullets
-  - 
-  - 
-  - 
+  - PostFX
+  - Cubes
+  - ActivateCube
   - 
   - 
   - 
